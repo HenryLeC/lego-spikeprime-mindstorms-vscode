@@ -329,9 +329,22 @@ async function performUploadProgram(slotId: number, type: "python" | "scratch", 
 
         let compileResult: mpy.CompileResult | undefined;
 
+        let fileData = fs.readFileSync(currentlyOpenTabFilePath, "utf-8");
+        const filePath = path.dirname(currentlyOpenTabFilePath);
+        const re = /^from .* import .* # \S*\.py$/gm;
+        const matches = fileData.match(re);
+        if (matches) {
+            for (const match of matches) {
+                const importFileName = match.split(" ").pop();
+                const importFilePath = path.join(filePath, importFileName ?? "");
+                const importFileData = fs.readFileSync(importFilePath, "utf-8");
+                fileData = fileData.replace(match, importFileData);
+            }
+        }
+
         if (config.get("legoSpikePrimeMindstorms.compileBeforeUpload")) {
             compileResult = await mpy.compile(path.basename(currentlyOpenTabFilePath),
-                fs.readFileSync(currentlyOpenTabFilePath).toString("utf-8"),
+                fileData,
                 ["-municode"]
             );
 
@@ -342,7 +355,7 @@ async function performUploadProgram(slotId: number, type: "python" | "scratch", 
             }
         }
 
-        const uploadSize = compileResult?.mpy?.byteLength ?? stats.size;
+        const uploadSize = compileResult?.mpy?.byteLength ?? fileData.length;
         const uploadProgramResult = await rpc.sendMessage(
             "start_write_program",
             {
@@ -382,8 +395,11 @@ async function performUploadProgram(slotId: number, type: "python" | "scratch", 
             }
         }
         else {
-            const stream = fs.createReadStream(currentlyOpenTabFilePath, { highWaterMark: blockSize });
-            for await (const data of stream) {
+            const stream: Readable = new Readable();
+            stream.push(fileData);
+            stream.push(null);
+            let data: Buffer | undefined;
+            while ((data = stream.read(blockSize)) != null) {
                 progress?.report({ increment });
                 await rpc.sendMessage(
                     "write_package",
