@@ -1,8 +1,8 @@
 {
-  "name": "lego-spikeprime-mindstorms-vscode",
+  "name": "lego-spikeprime-mindstorms-vscode-henrylec",
   "displayName": "LEGO SPIKE Prime / MINDSTORMS Robot Inventor Extension",
   "description": "Helps you connect Lego's SPIKE Prime/MINDSTORMS Robot Inventor",
-  "publisher": "PeterStaev",
+  "publisher": "HenryLeC",
   "version": "1.6.1",
   "engines": {
     "vscode": "^1.66.0"
@@ -34,35 +34,35 @@
     ],
     "commands": [
       {
-        "command": "lego-spikeprime-mindstorms-vscode.connectToHub",
+        "command": "lego-spikeprime-mindstorms-vscode-henrylec.connectToHub",
         "title": "LEGO Hub: Connect to Hub"
       },
       {
-        "command": "lego-spikeprime-mindstorms-vscode.disconnectFromHub",
+        "command": "lego-spikeprime-mindstorms-vscode-henrylec.disconnectFromHub",
         "title": "LEGO Hub: Disconnect from Hub"
       },
       {
-        "command": "lego-spikeprime-mindstorms-vscode.startProgram",
+        "command": "lego-spikeprime-mindstorms-vscode-henrylec.startProgram",
         "title": "LEGO Hub: Start Program",
         "icon": "$(run)"
       },
       {
-        "command": "lego-spikeprime-mindstorms-vscode.terminateProgram",
+        "command": "lego-spikeprime-mindstorms-vscode-henrylec.terminateProgram",
         "title": "LEGO Hub: Terminate Running Program",
         "icon": "$(stop)"
       },
       {
-        "command": "lego-spikeprime-mindstorms-vscode.uploadProgram",
+        "command": "lego-spikeprime-mindstorms-vscode-henrylec.uploadProgram",
         "title": "LEGO Hub: Upload Program",
         "icon": "$(refresh)"
       },
       {
-        "command": "lego-spikeprime-mindstorms-vscode.showTerminal",
+        "command": "lego-spikeprime-mindstorms-vscode-henrylec.showTerminal",
         "title": "LEGO Hub: Show Log Terminal",
         "icon": "$(terminal)"
       },
       {
-        "command": "lego-spikeprime-mindstorms-vscode.addFileHeader",
+        "command": "lego-spikeprime-mindstorms-vscode-henrylec.addFileHeader",
         "title": "LEGO Hub: Add File Header",
         "icon": "$(note)"
       }
@@ -70,27 +70,27 @@
     "menus": {
       "editor/title": [
         {
-          "command": "lego-spikeprime-mindstorms-vscode.startProgram",
+          "command": "lego-spikeprime-mindstorms-vscode-henrylec.startProgram",
           "group": "navigation@1",
-          "when": "editorLangId == python && lego-spikeprime-mindstorms-vscode.isConnectedIn"
+          "when": "editorLangId == python && lego-spikeprime-mindstorms-vscode-henrylec.isConnectedIn"
         },
         {
-          "command": "lego-spikeprime-mindstorms-vscode.terminateProgram",
+          "command": "lego-spikeprime-mindstorms-vscode-henrylec.terminateProgram",
           "group": "navigation@2",
-          "when": "editorLangId == python && lego-spikeprime-mindstorms-vscode.isConnectedIn"
+          "when": "editorLangId == python && lego-spikeprime-mindstorms-vscode-henrylec.isConnectedIn"
         },
         {
-          "command": "lego-spikeprime-mindstorms-vscode.uploadProgram",
+          "command": "lego-spikeprime-mindstorms-vscode-henrylec.uploadProgram",
           "group": "navigation@3",
-          "when": "editorLangId == python && lego-spikeprime-mindstorms-vscode.isConnectedIn"
+          "when": "editorLangId == python && lego-spikeprime-mindstorms-vscode-henrylec.isConnectedIn"
         },
         {
-          "command": "lego-spikeprime-mindstorms-vscode.showTerminal",
+          "command": "lego-spikeprime-mindstorms-vscode-henrylec.showTerminal",
           "group": "navigation@4",
-          "when": "editorLangId == python && lego-spikeprime-mindstorms-vscode.isConnectedIn"
+          "when": "editorLangId == python && lego-spikeprime-mindstorms-vscode-henrylec.isConnectedIn"
         },
         {
-          "command": "lego-spikeprime-mindstorms-vscode.addFileHeader",
+          "command": "lego-spikeprime-mindstorms-vscode-henrylec.addFileHeader",
           "group": "navigation@5",
           "when": "editorLangId == python"
         }
@@ -107,7 +107,7 @@
   "icon": "images/icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PeterStaev/lego-spikeprime-mindstorms-vscode.git"
+    "url": "https://github.com/HenryLeC/lego-spikeprime-mindstorms-vscode.git"
   },
   "license": "Apache-2.0",
   "scripts": {

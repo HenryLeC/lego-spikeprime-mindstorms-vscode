@@ -36,8 +36,8 @@ const programTypes: TypeQuickPickItem[] = [
 ];
 
 const enum Command {
-    ConnectToHub = "lego-spikeprime-mindstorms-vscode.connectToHub",
-    DisconnectFromHub = "lego-spikeprime-mindstorms-vscode.disconnectFromHub",
+    ConnectToHub = "lego-spikeprime-mindstorms-vscode-henrylec.connectToHub",
+    DisconnectFromHub = "lego-spikeprime-mindstorms-vscode-henrylec.disconnectFromHub",
 }
 
 export function activate(context: vscode.ExtensionContext) {
@@ -94,7 +94,7 @@ export function activate(context: vscode.ExtensionContext) {
         await updateHubStatusBarItem();
     });
 
-    const uploadProgramCommand = vscode.commands.registerCommand("lego-spikeprime-mindstorms-vscode.uploadProgram", async () => {
+    const uploadProgramCommand = vscode.commands.registerCommand("lego-spikeprime-mindstorms-vscode-henrylec.uploadProgram", async () => {
         if (!rpc?.isOpenIn) {
             vscode.window.showErrorMessage("LEGO Hub not connected! Please connect first!");
             return;
@@ -174,7 +174,7 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
-    const startProgramCommand = vscode.commands.registerCommand("lego-spikeprime-mindstorms-vscode.startProgram", async () => {
+    const startProgramCommand = vscode.commands.registerCommand("lego-spikeprime-mindstorms-vscode-henrylec.startProgram", async () => {
         if (!rpc?.isOpenIn) {
             vscode.window.showErrorMessage("LEGO Hub not connected! Please connect first!");
             return;
@@ -212,7 +212,7 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
-    const terminateProgramCommand = vscode.commands.registerCommand("lego-spikeprime-mindstorms-vscode.terminateProgram", async () => {
+    const terminateProgramCommand = vscode.commands.registerCommand("lego-spikeprime-mindstorms-vscode-henrylec.terminateProgram", async () => {
         if (!rpc?.isOpenIn) {
             vscode.window.showErrorMessage("LEGO Hub not connected! Please connect first!");
             return;
@@ -233,9 +233,9 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
-    const showTerminalCommand = vscode.commands.registerCommand("lego-spikeprime-mindstorms-vscode.showTerminal", showTerminal);
+    const showTerminalCommand = vscode.commands.registerCommand("lego-spikeprime-mindstorms-vscode-henrylec.showTerminal", showTerminal);
 
-    const addFileHeaderCommand = vscode.commands.registerCommand("lego-spikeprime-mindstorms-vscode.addFileHeader", async () => {
+    const addFileHeaderCommand = vscode.commands.registerCommand("lego-spikeprime-mindstorms-vscode-henrylec.addFileHeader", async () => {
         try {
             const editor = vscode.window.activeTextEditor;
 
@@ -446,7 +446,7 @@ async function updateHubStatusBarItem() {
         hubStatusBarItem.command = Command.ConnectToHub;
     }
 
-    vscode.commands.executeCommand("setContext", "lego-spikeprime-mindstorms-vscode.isConnectedIn", !!rpc?.isOpenIn);
+    vscode.commands.executeCommand("setContext", "lego-spikeprime-mindstorms-vscode-henrylec.isConnectedIn", !!rpc?.isOpenIn);
 }
 
 async function promptForProgramType(currentStep?: number, totalSteps?: number): Promise<TypeQuickPickItem | undefined> {
